@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
-class DataScreen
- extends StatefulWidget {
-  const DataScreen
-  ({super.key});
+class DataScreen extends StatefulWidget {
+  const DataScreen({super.key});
 
   @override
-  State<DataScreen
-  > createState() => _DataScreen
-  State();
+  State<DataScreen> createState() => _DataScreenState();
 }
 
-class _DataScreen
-State extends State<DataScreen
-> {
+class _DataScreenState extends State<DataScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Data"),
+      ),
+      body: Center(child: Text("Data Screen")),
+    );
   }
 }
