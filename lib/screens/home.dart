@@ -28,10 +28,10 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.black87,
               ),
               child: Transform.rotate(
-                angle: 15 * (pi / 180),
-                child: const Text(
+                angle: 10 * (pi / 180),
+                child: Text(
                   "Hello",
-                  style: TextStyle(color: Colors.white),
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
               ),
             ),

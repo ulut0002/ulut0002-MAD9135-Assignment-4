@@ -39,6 +39,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),
+        textTheme: TextTheme(
+          displayLarge: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontStyle: FontStyle.normal,
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+        ),
       ),
       home: loadPage(),
     );
