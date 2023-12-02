@@ -12,6 +12,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int currentPage = 0;
+  final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
+      GlobalKey<ScaffoldMessengerState>();
 
   void nav(int page) {
     setState(() {
@@ -27,7 +29,11 @@ class _MyAppState extends State<MyApp> {
       case 1:
         screen = DataScreen(nav: nav, page: currentPage);
       case 2:
-        screen = ContactScreen(nav: nav, page: currentPage);
+        screen = ContactScreen(
+          nav: nav,
+          page: currentPage,
+          scaffoldKey: _scaffoldKey,
+        );
       default:
         throw Exception("This page does not exist");
     }
@@ -37,6 +43,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scaffoldMessengerKey: _scaffoldKey,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),
         textTheme: TextTheme(

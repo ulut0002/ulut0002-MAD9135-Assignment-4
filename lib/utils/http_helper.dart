@@ -1,6 +1,5 @@
 import "package:flutter2/models/app_model.dart";
 import "package:http/http.dart" as http;
-
 import "dart:convert"; //for JSON conversion
 import "dart:async"; //for Futures (Promises)
 
@@ -17,7 +16,5 @@ class HTTPHelper {
     } else {
       throw Exception('Did not get a valid response.');
     }
-
-    return [];
   }
 }

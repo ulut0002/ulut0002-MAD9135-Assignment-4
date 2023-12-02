@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter2/models/app_model.dart';
 import 'package:flutter2/utils/http_helper.dart';
@@ -24,7 +25,9 @@ class _DataScreenState extends State<DataScreen> {
       news = HTTPHelper.fetch(
           "https://newsapi.org/v2/top-headlines?country=ca&apiKey=c9f04ec762314c9bbf8b9a62f2adb6b7");
     } catch (e) {
-      print(e.toString());
+      if (kDebugMode) {
+        print(e.toString());
+      }
     }
   }
 
@@ -38,7 +41,7 @@ class _DataScreenState extends State<DataScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Data"),
+        title: const Text("Data"),
       ),
       body: Column(
         children: [
@@ -47,8 +50,8 @@ class _DataScreenState extends State<DataScreen> {
             child: Text(
               "Canadian News",
               style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                    color: Colors.deepOrange,
-                    fontFamily: "Helvetica",
+                    color: Colors.red.shade900,
+                    fontFamily: "Garamond",
                     fontWeight: FontWeight.bold,
                   ),
             ),
@@ -70,17 +73,44 @@ class _DataScreenState extends State<DataScreen> {
                               ? Colors.white
                               : Colors.amber.shade50,
                           child: ListTile(
-                            title: Text(news.title),
+                            title: Text(
+                              news.title,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             subtitle: Padding(
                               padding: news.description.isNotEmpty
                                   ? const EdgeInsets.all(8.0)
                                   : const EdgeInsets.all(0),
-                              child: Text(
-                                news.description,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelSmall!
-                                    .copyWith(color: Colors.black54),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    news.description,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelSmall!
+                                        .copyWith(color: Colors.black54),
+                                  ),
+                                  if (news.author.isNotEmpty)
+                                    Column(
+                                      children: [
+                                        const SizedBox(
+                                          height: 12,
+                                        ),
+                                        Text(
+                                          "by ${news.author}",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .labelSmall!
+                                              .copyWith(
+                                                  color: Colors.grey.shade600,
+                                                  fontSize: 11),
+                                        ),
+                                      ],
+                                    )
+                                ],
                               ),
                             ),
                             style: ListTileStyle.list,
