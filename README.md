@@ -17,9 +17,13 @@ This is a simple Flutter app with following features
 
 ![Home Screen](assets/image1.png)
 
+---
+
 ### Data Screen
 
 ![Data Screen](assets/image2.png)
+
+---
 
 ### Contact Screen
 
