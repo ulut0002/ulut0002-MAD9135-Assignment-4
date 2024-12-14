@@ -18,12 +18,12 @@ class _DataScreenState extends State<DataScreen> {
   late Future<List<News>> news;
 
   void getNews() {
-    // Top headlines from Canada
+    // Top headlines from USs
     // https://newsapi.org/v2/top-headlines?country=ca&apiKey=c9f04ec762314c9bbf8b9a62f2adb6b7
     // API Key: c9f04ec762314c9bbf8b9a62f2adb6b7
     try {
       news = HTTPHelper.fetch(
-          "https://newsapi.org/v2/top-headlines?country=ca&apiKey=c9f04ec762314c9bbf8b9a62f2adb6b7");
+          "https://newsapi.org/v2/top-headlines?country=us&apiKey=c9f04ec762314c9bbf8b9a62f2adb6b7");
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
@@ -48,7 +48,7 @@ class _DataScreenState extends State<DataScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              "Canadian News",
+              "US News",
               style: Theme.of(context).textTheme.displaySmall!.copyWith(
                     color: Colors.red.shade900,
                     fontFamily: "Garamond",
